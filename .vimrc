@@ -13,16 +13,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'ap/vim-buftabline'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
+Plugin 'morhetz/gruvbox'
+Plugin 'mattn/emmet-vim'
+Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
-
 "---------------------------------------------------------------------
 " prevent vim from giving a warning it the swp file is open 
 set shortmess=A
@@ -39,7 +38,8 @@ set virtualedit=onemore
 set laststatus=0
 " -----------------------------------------------------------------------------------------
 " This sets the color scheme
-colorscheme jellybeans
+colorscheme gruvbox
+set bg=dark
 " -----------------------------------------------------------------------------------------
 " wrapping lines when arrows are pressed
 set whichwrap+=<,>,h,l,[,]
@@ -54,6 +54,11 @@ set whichwrap+=<,>,h,l,[,]
 :nmap <c-Down> +3 
 :vmap <c-Up> -3
 :nmap <c-Down> +3 
+
+"-----------------------------------------------------------------------------------------
+" Set key for toggle nerdtre or tagbar
+:nmap <F8> :TagbarToggle<CR>
+:nmap <F7> :NERDTreeToggle<CR>
 
 " -----------------------------------------------------------------------------------------
 " autocomplete 
@@ -87,36 +92,6 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 
-" -----------------------------------------------------------------------------------------
-" navigates to the next buffer
-:nmap <c-n> :bnext<CR>
-:nmap <c-p> :bprev<CR>
-:ab Wq :wq
-:ab W :w
-:ab WQ :wq
-:ab Q :q
-:set guitablabel=%t  " show only the file name an not the path 
-:au FocusLost * :wa  " save when focus is lost (not sure if this is working. Test)
-
-" start the terminal in the given path by typing :t on the minibuffer
-:ab t :!urxvt -bg black --geometry 85x47+683+0&\|<CR> 
-" -----------------------------------------------------------------------------------------
-" press // for comment using nerd commenter
-nmap // <leader>c<space>
-vmap // <leader>c<space>
-
-" -----------------------------------------------------------------------------------------
-" toggling between insert, normal and visual mode upon triple key press
-:imap vv <Esc>v
-:nmap vv <Esc>v
-:imap <c-l> <Esc>la
-:nmap <c-l> e
-:nmap <c-h> b
-:nmap <C-Right> e
-:imap <c-x><c-x> <Esc>:update<CR>\|<Esc>:!rxvt-unicode -bg black --geometry 85x47+683+0 -e sh -c "make && make run; bash"&<CR>\|<CR>  
-:nmap <c-x><c-x> :update<CR>\|<Esc>:!rxvt-unicode -bg black --geometry 85x47+683+0 -e sh -c "make && make run; bash"&<CR>\|<CR>
-":imap <c-x><c-x> <Esc>:update<CR>\|<Esc>:"make && make run"<CR>  
-":nmap <c-x><c-x> :update<CR>\|<Esc>:"make && make run"<CR>
 " ------------------------------------------------------------------------------
 " UltiSnips stuff 
 let g:UltiSnipsExpandTrigger = "<nop>"
@@ -150,6 +125,3 @@ au BufReadPost *
 let g:airline_theme='papercolor'
 "------------------------------------------------------------------------------
 " Set font color scheme
-set guifont=Monaco:h10 noanti
-hi Visual       ctermfg=255 guifg=#eeeeee ctermbg=96  guibg=#875f87
-hi VisualNOS    ctermfg=255 guifg=#eeeeee ctermbg=60  guibg=#5f5f87

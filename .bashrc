@@ -40,6 +40,11 @@ case "$TERM" in
     xterm|xterm-color|*-256color) color_prompt=yes;;
 esac
 
+if [ "$TERM" == "xterm" ]; then
+	# set to screen-256color for tmux too
+	export TERM=screen-256color
+fi
+
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -56,16 +61,39 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    if [[ ${EUID} == 0 ]] ; then
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-    else
-        PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\w \$\[\033[00m\] '
-    fi
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h \w \$ '
-fi
-unset color_prompt force_color_prompt
+# Make ls use colors
+export CLICOLOR=1
+alias ls='ls -Fa --color=auto'
+alias grep='grep --color=auto'
+
+# define colors
+C_DEFAULT="\[\033[m\]"
+C_WHITE="\[\033[1m\]"
+C_BLACK="\[\033[30m\]"
+C_RED="\[\033[31m\]"
+C_GREEN="\[\033[32m\]"
+C_YELLOW="\[\033[33m\]"
+C_BLUE="\[\033[34m\]"
+C_PURPLE="\[\033[35m\]"
+C_CYAN="\[\033[36m\]"
+C_LIGHTGRAY="\[\033[37m\]"
+C_DARKGRAY="\[\033[1;30m\]"
+C_LIGHTRED="\[\033[1;31m\]"
+C_LIGHTGREEN="\[\033[1;32m\]"
+C_LIGHTYELLOW="\[\033[1;33m\]"
+C_LIGHTBLUE="\[\033[1;34m\]"
+C_LIGHTPURPLE="\[\033[1;35m\]"
+C_LIGHTCYAN="\[\033[1;36m\]"
+C_BG_BLACK="\[\033[40m\]"
+C_BG_RED="\[\033[41m\]"
+C_BG_GREEN="\[\033[42m\]"
+C_BG_YELLOW="\[\033[43m\]"
+C_BG_BLUE="\[\033[44m\]"
+C_BG_PURPLE="\[\033[45m\]"
+C_BG_CYAN="\[\033[46m\]"
+C_BG_LIGHTGRAY="\[\033[47m\]"
+
+export PS1="\n$C_LIGHTGREEN\u$C_DARKGRAY@$C_BLUE\h $C_DARKGRAY: $C_LIGHTYELLOW\w\n$C_DARKGRAY\$$C_DEFAULT "
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -125,3 +153,4 @@ if [ -x /usr/bin/mint-fortune ]; then
 fi
 source /opt/ros/lunar/setup.bash
 source ~/catkin_ws/devel/setup.bash
+setxkbmap -option caps:swapescape
