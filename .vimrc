@@ -12,15 +12,36 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" for folder manage
 Plugin 'scrooloose/nerdtree'
+" for snippet
 Plugin 'SirVer/ultisnips'
+" for auto complete
 Plugin 'Valloric/YouCompleteMe'
+" for vim airline theme
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'NLKNguyen/papercolor-theme'
+" for vim theme
 Plugin 'morhetz/gruvbox'
+" for html auto generator
 Plugin 'mattn/emmet-vim'
+" for function manage
 Plugin 'majutsushi/tagbar'
+" for function find 
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+" for coding time watch
+Plugin 'wakatime/vim-wakatime'
+" for auto add close tag
+Plugin 'jiangmiao/auto-pairs'
+" for indent
+Plugin 'Yggdroot/indentLine'
+" for auto close html tag
+Plugin 'alvan/vim-closetag'
+" for file auto complete
+Plugin 'stegtmeyer/find-complete'
+
 call vundle#end()            " required
 "---------------------------------------------------------------------
 " prevent vim from giving a warning it the swp file is open 
@@ -45,20 +66,18 @@ set bg=dark
 set whichwrap+=<,>,h,l,[,]
 
 " -----------------------------------------------------------------------------------------
-" scrolling up and down multiple lines atonce
-:nmap <c-j> +3
-:vmap <c-j> +3
-:nmap <c-k> -3
-:vmap <c-k> -3
-:nmap <c-Up> -3
-:nmap <c-Down> +3 
-:vmap <c-Up> -3
-:nmap <c-Down> +3 
+" set vim for switch between tab 
+nnoremap <C-j> :tabprevious<CR>
+nnoremap <C-k> :tabnext<CR>
 
 "-----------------------------------------------------------------------------------------
 " Set key for toggle nerdtre or tagbar
 :nmap <F8> :TagbarToggle<CR>
 :nmap <F7> :NERDTreeToggle<CR>
+
+"------------------------------------------------------------------------------------------
+"Setting for ACK vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " -----------------------------------------------------------------------------------------
 " autocomplete 
@@ -79,8 +98,7 @@ set tabstop=4
 set shiftwidth=4
 
 " setting indent markers-------------------------------------------------------------------
-set listchars=tab:\|\ 
-set list
+let g:indentLine_char = '┆'
 
 " -----------------------------------------------------------------------------------------
 " Nerd Tree file manager
@@ -98,10 +116,39 @@ let g:UltiSnipsExpandTrigger = "<nop>"
 inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
 let g:UltiSnipsSnippetDirectories = ['/$HOME/config_files/nvim/UltiSnips', 'UltiSnips']
 " -------------------------------------------------------------------------------
-" latex stuff 
-filetype plugin on
-filetype indent on
-let g:tex_flavor='latex'
+" set for auto close tag html 
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+
+" filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+
+" filetypes like xml, html, xhtml, ...
+" These are the file types where this plugin is enabled.
+"
+let g:closetag_filetypes = 'html,xhtml,phtml'
+
+" filetypes like xml, xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
+"
+let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+
+" integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+"
+let g:closetag_emptyTags_caseSensitive = 1
+
+" Shortcut for closing tags, default is '>'
+"
+let g:closetag_shortcut = '>'
+
+" Add > at current position without closing the current tag, default is ''
+"
+let g:closetag_close_shortcut = '<leader>>'
 
 " -------------------------------------------------------------------------------
 "changes cursor color between insert mode and normal mode
