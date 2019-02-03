@@ -151,6 +151,4 @@ fi
 if [ -x /usr/bin/mint-fortune ]; then
      /usr/bin/mint-fortune
 fi
-source /opt/ros/lunar/setup.bash
-source ~/catkin_ws/devel/setup.bash
 setxkbmap -option caps:swapescape

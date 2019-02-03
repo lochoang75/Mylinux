@@ -7,43 +7,46 @@ set clipboard^=unnamed " This sets the clipboard as the default register. Useful
 set nocompatible " This tells vim not to act like it predecessor vi
 syntax enable " enables syntax highlighting
 filetype plugin indent on    " identify the kind of filetype automatically
+if empty(glob('~/.vim/autoload/plug.vim'))
+ 	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" for folder manage
-Plugin 'scrooloose/nerdtree'
+call plug#begin('~/.vim/plugged')
+Plug 'scrooloose/nerdtree'
 " for snippet
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " for auto complete
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 " for vim airline theme
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-airline/vim-airline'
-Plugin 'NLKNguyen/papercolor-theme'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'NLKNguyen/papercolor-theme'
 " for vim theme
-Plugin 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 " for html auto generator
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 " for function manage
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 " for function find 
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
+Plug 'rking/ag.vim'
 " for coding time watch
-Plugin 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime'
 " for auto add close tag
-Plugin 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 " for indent
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 " for auto close html tag
-Plugin 'alvan/vim-closetag'
+Plug 'alvan/vim-closetag'
 " for file auto complete
-Plugin 'stegtmeyer/find-complete'
-
-call vundle#end()            " required
+Plug 'stegtmeyer/find-complete'
+" ycm_extra_conf generator"
+Plug 'rdnetto/YCM-Generator',{'branch': 'stable'}
+call plug#end()            " required
 "---------------------------------------------------------------------
+
 " prevent vim from giving a warning it the swp file is open 
 set shortmess=A
 "set foldmethod=syntax
@@ -81,7 +84,6 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " -----------------------------------------------------------------------------------------
 " autocomplete 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_auto_trigger = 1
 let g:ycm_min_num_of_chars_for_completion = 3
 let g:ycm_confirm_extra_conf = 0
