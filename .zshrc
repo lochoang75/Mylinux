@@ -99,12 +99,31 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ## set colors for LS_COLORS
-eval `dircolors ~/.dircolors`
+#eval `dircolors ~/.dircolors`
+
+# Add new line
+prompt_end() {
+  if [[ -n $CURRENT_BG ]]; then
+      print -n "%{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+  else
+      print -n "%{%k%}"
+  fi
+
+  print -n "%{%f%}"
+  CURRENT_BG='' 
+
+  #Adds the new line and ➜ as the start character.
+  printf "\n $";
+}
+
 
 # Disable sound
 unsetopt BEEP
 
 # Set default user
 DEFAULT_USER=`whoami`
+
+# Swap esc and caps
+setxkbmap -option caps:swapescape
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
