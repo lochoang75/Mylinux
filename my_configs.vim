@@ -22,3 +22,7 @@ set conceallevel=1
 let g:indentLine_conceallevel=1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_enabled = 1
+
+" Configure Tagbar
+let g:tagbar_width = 30
+autocmd VimEnter * nested :call tagbar#autoopen(1)
