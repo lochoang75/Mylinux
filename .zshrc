@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/fallinlove/.oh-my-zsh"
+export ZSH="/root/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,7 +68,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,4 +126,10 @@ DEFAULT_USER=`whoami`
 # Swap esc and caps
 setxkbmap -option caps:swapescape
 
+# FzF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Auto LS
+chpwd() {
+    ls
+}
