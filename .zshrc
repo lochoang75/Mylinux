@@ -2,8 +2,15 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/root/.oh-my-zsh"
-
+if [ `hostname` = "ubuntu" ]
+then
+    export ZSH="/home/elliot/.oh-my-zsh"
+else
+    if [ `hostname` = "kali" ]
+    then
+        export ZSH="/root/.oh-my-zsh"
+    fi
+fi
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
