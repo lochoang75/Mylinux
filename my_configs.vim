@@ -4,6 +4,9 @@ set visualbell
 " Set split
 set splitbelow
 
+" Set new buff size
+set termwinsize=10x0
+
 " Color scheme
 colorscheme gruvbox
 
