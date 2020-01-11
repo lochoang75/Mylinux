@@ -127,7 +127,8 @@ DEFAULT_USER=`whoami`
 setxkbmap -option caps:swapescape
 
 # FzF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+ source /usr/share/fzf/key-bindings.zsh
+ source /usr/share/fzf/completion.zsh
 
 # Auto LS
 chpwd() {
