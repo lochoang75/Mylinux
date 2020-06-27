@@ -8,7 +8,7 @@ set splitbelow
 set termwinsize=10x0
 
 " Color scheme
-colorscheme gruvbox
+colorscheme solarized 
 
 " Background
 set background=dark
@@ -26,6 +26,15 @@ let g:indentLine_conceallevel=1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_enabled = 1
 
-" Configure Tagbar
-let g:tagbar_width = 30
-autocmd VimEnter * nested :call tagbar#autoopen(1)
+" Config for pep 8 python
+au BufNewFile,BufRead *.py
+            \ set tabstop=4     |
+            \ set softtabstop=4 |
+            \ set shiftwidth=4  |
+            \ set textwidth=79  |
+            \ set expandtab     |
+            \ set autoindent    |   
+            \ set fileformat=unix
+
+" Config auto config
+let g:ycm_autoclose_preview_window_after_completion=1
