@@ -7,6 +7,9 @@ set splitbelow
 " Set new buff size
 set termwinsize=10x0
 
+" Set color term for terminal use
+ let g:solarized_termcolors=256
+
 " Color scheme
 colorscheme solarized 
 
@@ -38,3 +41,8 @@ au BufNewFile,BufRead *.py
 
 " Config auto config
 let g:ycm_autoclose_preview_window_after_completion=1
+
+" Disable auto replace mode in vim
+if $TERM =~ 'xterm-256color'
+    set noek
+endif

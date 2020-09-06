@@ -51,10 +51,9 @@ python3 install.py --clang-completer
 cd ~/.vim_runtime/my_plugins
 git clone https://github.com/rdnetto/YCM-Generator.git
 
-# Install Gruvbox theme
+# Install Solarized theme
 cd ~/.vim_runtime/my_plugins
-git clone https://github.com/morhetz/gruvbox.git
-
+git clone git://github.com/altercation/vim-colors-solarized.git
 # Install Universal Ctags
 sudo apt-get install -y ctags
 
