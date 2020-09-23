@@ -8,19 +8,20 @@ set splitbelow
 set termwinsize=10x0
 
 " Set color term for terminal use
- let g:solarized_termcolors=256
+let g:solarized_termcolors= 256
+" set this to disable transparent layer in the upper of text 
+let g:solarized_termtrans = 1
 
 " Color scheme
-colorscheme solarized 
-
+colorscheme solarized
 " Background
 set background=dark
 
 "---------------------------------------------------------------
 "---------------------------------------------------------------
 " Configure gruvbox
-let g:gruvbox_termcolors=16
-let g:gruvbox_contrast_dark = 'soft'
+"let g:gruvbox_termcolors=16
+"let g:gruvbox_contrast_dark = 'soft'
 
 " Configure indent line
 "let g:indentLine_color_term = 239
