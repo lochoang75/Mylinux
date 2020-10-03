@@ -126,11 +126,12 @@ DEFAULT_USER=`whoami`
 # Swap esc and caps
 setxkbmap -option caps:swapescape
 
-# FzF
- source /usr/share/fzf/key-bindings.zsh
- source /usr/share/fzf/completion.zsh
-
 # Auto LS
 chpwd() {
     ls
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# run Tmux on terminal bootup
+[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
