@@ -132,6 +132,3 @@ chpwd() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# run Tmux on terminal bootup
-[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit;}
