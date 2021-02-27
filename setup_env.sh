@@ -6,9 +6,12 @@ sudo apt-get update
 # System upgrade
 sudo apt-get upgrade -y
 
-# System update
-sudo apt-get update
-
+# Check script run permission
+if [ "$(whoami)" == "root" ]; then
+    echo "Script already request sudo permission, please run on normal user\
+    do not install for root user"
+    exit 255
+fi
 # Install vim
 echo "[+] Install vim"
 sudo apt-get install vim-nox -y
@@ -57,11 +60,11 @@ bash -c  "$(wget -qO- https://git.io/vQgMr)"
 
 # Install Tmux
 echo "[+] Install tmux"
-sudo apt-get install tmux
+sudo apt-get install tmux curl -y
 
 # Install power line
 echo "[+] Install powerline theme for tmux"
-sudo apt-get install powerline
+sudo apt-get install powerline -y
 
 # Install power line font
 echo "[+] Update powerline fonts"
@@ -69,12 +72,12 @@ wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.ot
 wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 
 # Path font to system
-mv PowerlineSymbols.otf /usr/share/fonts/
+sudo mv PowerlineSymbols.otf /usr/share/fonts/
 # Update font
-fc-cache -vf /usr/share/fonts/
+sudo fc-cache -vf /usr/share/fonts/
 
 # install font config file
-mv 10-powerline-symbols.conf /etc/fonts/conf.d/
+sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
 # override tmux conf
 echo "[/] Override tmux conf file"
@@ -90,4 +93,8 @@ fi
 echo "[+] Install fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# Install vim plug manager
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
