@@ -37,7 +37,7 @@ Plug '~/my-prototype-plugin'
 Plug 'ycm-core/YouCompleteMe'
 
 " Install gruvbox color scheme
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-solarized8'
 
 " Install lightline
 Plug 'itchyny/lightline.vim'
@@ -56,20 +56,21 @@ set splitbelow
 set termwinsize=10x0
 
 " Set color term for terminal use
-let g:solarized_termcolors= 256
+"let g:solarized_termcolors= 256
 " set this to disable transparent layer in the upper of text 
 let g:solarized_termtrans = 1
 
 " Color scheme
-colorscheme gruvbox 
+colorscheme solarized8 
 " Background
 set background=dark
 
+if (has("termguicolors"))
+    set termguicolors
+endif
+
 "---------------------------------------------------------------
 "---------------------------------------------------------------
-" Configure gruvbox
-let g:gruvbox_termcolors=256
-let g:gruvbox_contrast_dark = 'soft'
 
 " Config for pep 8 python
 au BufNewFile,BufRead *.py
@@ -228,16 +229,10 @@ set foldcolumn=1
 " Enable syntax highlighting
 syntax enable 
 
-" Enable 256 colors palette in Gnome Terminal
-if $COLORTERM == 'gnome-terminal'
-    set t_Co=256
-endif
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
     set guioptions-=e
-    set t_Co=256
     set guitablabel=%M\ %t
 endif
 
@@ -598,18 +593,6 @@ endfunction
 au FileType coffee call CoffeeScriptFold()
 
 au FileType gitcommit call setpos('.', [0, 1, 1, 0])
-
-
-""""""""""""""""""""""""""""""
-" => Shell section
-""""""""""""""""""""""""""""""
-if exists('$TMUX') 
-    if has('nvim')
-        set termguicolors
-    else
-        set term=screen-256color 
-    endif
-endif
 
 
 """"""""""""""""""""""""""""""

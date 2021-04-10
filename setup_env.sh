@@ -83,12 +83,6 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 echo "[/] Override tmux conf file"
 cp ~/mylinux/.tmux.conf ~/
 
-# Install work enviroment
-if [ $1 = "work" ]
-then
-    sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat libsdl1.2-dev xterm make xsltproc docbook-utils fop dblatex xmlto autoconf automake libtool libglib2.0-dev python-gtk2 bsdmainutils screen -y
-fi
-
 # Install fzf
 echo "[+] Install fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
