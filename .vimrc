@@ -49,6 +49,9 @@ call plug#end()
 " Disable sound
 set visualbell
 
+" Set show line number
+set number
+
 " Set split
 set splitbelow
 
@@ -90,6 +93,12 @@ let g:ycm_confirm_extra_conf=0
 
 " Set minimum charactor for completion
 let g:ycm_min_num_of_chars_for_completion = 3
+
+" Set error symbol ycm
+let g:ycm_enable_diagnostic_signs = 0
+
+" Set highlight for line error only
+let g:ycm_enable_diagnostic_highlighting = 1
 
 " Set cursor line
 set cursorline
