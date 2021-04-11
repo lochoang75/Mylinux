@@ -15,7 +15,10 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 " On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' } |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryannasis/vim-devicons'
+            
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " Using a non-default branch
@@ -44,6 +47,12 @@ Plug 'itchyny/lightline.vim'
 
 " Install CtrP
 Plug 'kien/ctrlp.vim'
+
+" Install vim rainbow brace
+Plug 'frazrepo/vim-rainbow'
+
+" Install ACK vim 
+Plug 'mileszs/ack.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -74,6 +83,26 @@ set background=dark
 if (has("termguicolors"))
     set termguicolors
 endif
+
+let g:rainbow_active = 1
+
+"--------------------------------------------------------------
+"-------------------------------------------------------------
+" NERDtree configure
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
+" Enable nerd font
+let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 
 "---------------------------------------------------------------
 "---------------------------------------------------------------

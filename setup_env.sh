@@ -16,6 +16,8 @@ fi
 echo "[+] Install vim"
 sudo apt-get install vim-nox -y
 
+# Install ACK
+sudo apt-get install ack -y
 # Install vim plug manager
 echo "[+] Install vimplugin"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -91,4 +93,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 # Install vim plug manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+eco "All is set but you need to install NERD font if you want to use nerdtree in vim"
+
 
