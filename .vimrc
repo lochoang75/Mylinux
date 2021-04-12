@@ -17,7 +17,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " On-demand loading
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' } |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-            \ Plug 'ryannasis/vim-devicons'
+            \ Plug 'ryanoasis/vim-devicons'
             
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
