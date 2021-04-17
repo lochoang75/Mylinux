@@ -57,6 +57,9 @@ Plug 'mileszs/ack.vim'
 " Install vim-fugitive to manage git
 Plug 'tpope/vim-fugitive'
 
+" Install nerdcommeter
+Plug 'preservim/nerdcommenter'
+
 " Initialize plugin system
 call plug#end()
 
