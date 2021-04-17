@@ -17,7 +17,7 @@ echo "[+] Install vim"
 sudo apt-get install vim-nox -y
 
 # Install ACK
-sudo apt-get install ack -y
+sudo apt-get install ack silversearcher-ag -y
 # Install vim plug manager
 echo "[+] Install vimplugin"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -25,7 +25,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 
 # overrid .vimrc
 echo "[/] Override .vimrc"
-cp ~/mylinux/.vimrc ~/
+rm -rf ~/.vimrc
+ln -s ./.vimrc ~/.vimrc
 
 # Install git
 echo "[+] Install git"
@@ -54,7 +55,8 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/maste
 
 # Override .zshrc
 echo "[/] Update .zshrc"
-cp ~/Mylinux/.zshrc .
+rm -rf ~/.zshrc
+ln -s ./.zshrc ~/.zshrc
 
 # Install Gnome terminal theme
 echo "[+} Install gnome terminal theme"
@@ -83,7 +85,8 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 
 # override tmux conf
 echo "[/] Override tmux conf file"
-cp ~/mylinux/.tmux.conf ~/
+rm -rf ~/.tmux.conf
+ln -s ./.tmux.conf ~/.tmux.conf
 
 # Install fzf
 echo "[+] Install fzf"
