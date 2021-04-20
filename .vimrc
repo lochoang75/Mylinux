@@ -60,6 +60,9 @@ Plug 'tpope/vim-fugitive'
 " Install nerdcommeter
 Plug 'preservim/nerdcommenter'
 
+" Install doxygen
+Plug 'vim-scripts/DoxygenToolkit.vim'
+
 " Initialize plugin system
 call plug#end()
 
