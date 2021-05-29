@@ -63,6 +63,12 @@ Plug 'preservim/nerdcommenter'
 " Install doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
+" Install jedi-vim for python
+Plug 'davidhalter/jedi-vim'
+
+" Install vim-flake8 for python
+Plug 'nvie/vim-flake8'
+
 " Initialize plugin system
 call plug#end()
 
