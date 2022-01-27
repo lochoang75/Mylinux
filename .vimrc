@@ -24,6 +24,9 @@ Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 " Using a non-default branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
 " Plugin options
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 
@@ -60,10 +63,10 @@ Plug 'preservim/nerdcommenter'
 " Install doxygen
 Plug 'vim-scripts/DoxygenToolkit.vim'
 
-" Install jedi-vim for python
+" Install jedi vim for python
 Plug 'davidhalter/jedi-vim'
 
-" Install vim-flake8 for python
+" Install vim-flake8 for code editor
 Plug 'nvie/vim-flake8'
 
 " Initialize plugin system
@@ -627,6 +630,11 @@ autocmd BufRead *.twig set syntax=html filetype=html
 
 
 """"""""""""""""""""""""""""""
+" => Go configure 
+""""""""""""""""""""""""""""""
+let g:go_gopls_enabled = 0
+
+""""""""""""""""""""""""""""""
 " => Markdown
 """"""""""""""""""""""""""""""
 let vim_markdown_folding_disabled = 1
@@ -674,25 +682,6 @@ cnoremap <C-K>		<C-U>
 
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a`<esc>`<i`<esc>
-
-" Map auto complete of (, ", ', [
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
