@@ -26,7 +26,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 # overrid .vimrc
 echo "[/] Override .vimrc"
 rm -rf ~/.vimrc
-ln -s ./.vimrc ~/.vimrc
+ln -s ~/Mylinux/.vimrc ~/.vimrc
 
 # Install git
 echo "[+] Install git"
@@ -56,7 +56,7 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/maste
 # Override .zshrc
 echo "[/] Update .zshrc"
 rm -rf ~/.zshrc
-ln -s ./.zshrc ~/.zshrc
+ln -s ~/Mylinux/.zshrc ~/.zshrc
 
 # Install Gnome terminal theme
 echo "[+} Install gnome terminal theme"
@@ -86,7 +86,7 @@ sudo mv 10-powerline-symbols.conf /etc/fonts/conf.d/
 # override tmux conf
 echo "[/] Override tmux conf file"
 rm -rf ~/.tmux.conf
-ln -s ./.tmux.conf ~/.tmux.conf
+ln -s ~/Mylinux/.tmux.conf ~/.tmux.conf
 
 # Install fzf
 echo "[+] Install fzf"
