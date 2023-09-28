@@ -58,10 +58,6 @@ echo "[/] Update .zshrc"
 rm -rf ~/.zshrc
 ln -s ~/Mylinux/.zshrc ~/.zshrc
 
-# Install Gnome terminal theme
-echo "[+} Install gnome terminal theme"
-bash -c  "$(wget -qO- https://git.io/vQgMr)"
-
 # Install Tmux
 echo "[+] Install tmux"
 sudo apt-get install tmux curl -y
@@ -85,6 +81,9 @@ sudo mv *.ttf /usr/share/fonts/
 
 echo "[+] Install powerlevel 10k theme"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo "[+] Install zsh-autosuggestions"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 
 # Path font to system
