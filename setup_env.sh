@@ -108,6 +108,10 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+machine_name=`sudo dmidecode -t 1 | grep "Product Name" | xargs`
+if [[ $machine_name == "Product Name: Latitude 7490" ]]; then
+    echo "Fix hang issue on dell 7490"
+    echo "options i915 enable_psr=0" > i915.conf
+    sudo mv i915.conf /etc/modprobe.d/
+fi
 echo "All is set but you need to install NERD font if you want to use nerdtree in vim"
-
-
