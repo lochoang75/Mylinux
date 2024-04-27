@@ -81,6 +81,7 @@ sudo mv *.ttf /usr/share/fonts/
 
 echo "[+] Install powerlevel 10k theme"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+ln -sf ~/Mylinux/.p10k.zsh ~/.p10k.zsh
 
 echo "[+] Install zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -103,6 +104,7 @@ ln -s ~/Mylinux/.tmux.conf ~/.tmux.conf
 echo "[+] Install fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+ln -sf ~/Mylinux/.fzf.zsh ~/.fzf.zsh
 
 # Install vim plug manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
