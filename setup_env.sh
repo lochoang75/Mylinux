@@ -18,6 +18,7 @@ sudo apt-get install vim-nox -y
 
 # Install ACK
 sudo apt-get install ack silversearcher-ag -y
+
 # Install vim plug manager
 echo "[+] Install vimplugin"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -106,9 +107,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ln -sf ~/Mylinux/.fzf.zsh ~/.fzf.zsh
 
-# Install vim plug manager
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# Install bat
+echo "[+] Install bat, color preview"
+sudo apt-get install bat
 
 machine_name=`sudo dmidecode -t 1 | grep "Product Name" | xargs`
 if [[ $machine_name == "Product Name: Latitude 7490" ]]; then
