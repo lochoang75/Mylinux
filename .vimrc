@@ -70,6 +70,12 @@ Plug 'davidhalter/jedi-vim'
 " Install vim-flake8 for code editor
 Plug 'nvie/vim-flake8'
 
+" Install vim-ident guide for ident indicator
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Install vim-gitgutter to show git diff
+Plug 'airblade/vim-gitgutter'
+
 " Initialize plugin system
 call plug#end()
 
@@ -87,14 +93,17 @@ set splitbelow
 set termwinsize=10x0
 
 " Set color term for terminal use
-"let g:solarized_termcolors= 256
+"let g:solarized_termcolors=256
 " set this to disable transparent layer in the upper of text 
-let g:solarized_termtrans = 1
+"let g:solarized_termtrans = 1
+"let g:solarized_degrade=1
+set termguicolors"
 
-" Color scheme
-colorscheme solarized8 
 " Background
 set background=dark
+
+" Color scheme
+colorscheme solarized8_flat
 
 if (has("termguicolors"))
     set termguicolors
@@ -769,3 +778,14 @@ endfunc
 " => fzf vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:fzf_vim = {}
+nmap <silent> sf :Files<cr>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Indent Guide
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi IndentGuidesOdd  ctermbg=green
+hi IndentGuidesEven ctermbg=cyan
+let g:indent_guides_enable_on_vim_startup = 1
+
+

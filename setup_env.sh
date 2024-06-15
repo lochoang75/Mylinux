@@ -13,6 +13,7 @@ if [ "$(whoami)" == "root" ]; then
     exit 255
 fi
 # Install vim
+sudo add-apt-repository --yes ppa:jonathonf/vim
 echo "[+] Install vim"
 sudo apt-get install vim-nox -y
 
