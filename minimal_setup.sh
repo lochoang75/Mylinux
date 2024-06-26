@@ -3,19 +3,12 @@
 # System update
 sudo apt-get update
 
-# System upgrade
-sudo apt-get upgrade -y
-
 # Check script run permission
 if [ "$(whoami)" == "root" ]; then
     echo "Script already request sudo permission, please run on normal user\
     do not install for root user"
     exit 255
 fi
-# Install vim
-sudo add-apt-repository --yes ppa:jonathonf/vim
-echo "[+] Install vim"
-sudo apt-get install vim-nox -y
 
 # Install ACK
 sudo apt-get install ack silversearcher-ag -y
@@ -29,10 +22,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 echo "[/] Override .vimrc"
 rm -rf ~/.vimrc
 ln -s ~/Mylinux/.vimrc ~/.vimrc
-
-# Install git
-echo "[+] Install git"
-sudo apt-get install git -y
 
 # Install YCM required package
 echo "[+} Install YCM essential requirement, please build it by yourself in ~/.vim/plugged/YouCompleteMe"
@@ -55,10 +44,6 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/maste
 echo "[/] Update .zshrc"
 rm -rf ~/.zshrc
 ln -s ~/Mylinux/.zshrc ~/.zshrc
-
-# Install Tmux
-echo "[+] Install tmux"
-sudo apt-get install tmux curl -y
 
 # Install power line
 echo "[+] Install powerline theme for tmux"
@@ -84,7 +69,6 @@ ln -sf ~/Mylinux/.p10k.zsh ~/.p10k.zsh
 echo "[+] Install zsh-autosuggestions"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-
 # Path font to system
 sudo mv PowerlineSymbols.otf /usr/share/fonts/
 # Update font
@@ -103,15 +87,4 @@ echo "[+] Install fzf"
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 ln -sf ~/Mylinux/.fzf.zsh ~/.fzf.zsh
-
-# Install bat
-echo "[+] Install bat, color preview"
-sudo apt-get install bat
-
-machine_name=`sudo dmidecode -t 1 | grep "Product Name" | xargs`
-if [[ $machine_name == "Product Name: Latitude 7490" ]]; then
-    echo "Fix hang issue on dell 7490"
-    echo "options i915 enable_psr=0" > i915.conf
-    sudo mv i915.conf /etc/modprobe.d/
-fi
 echo "All is set but you need to install NERD font if you want to use nerdtree in vim"
