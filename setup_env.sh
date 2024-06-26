@@ -12,6 +12,9 @@ if [ "$(whoami)" == "root" ]; then
     do not install for root user"
     exit 255
 fi
+
+SETUP_USER="$(whoami)"
+
 # Install vim
 sudo add-apt-repository --yes ppa:jonathonf/vim
 echo "[+] Install vim"
@@ -44,7 +47,7 @@ sudo apt-get install -y zsh
 
 # Change user default shell to zsh
 echo "[/] Change shell to zsh"
-sudo chsh -s /bin/zsh elliot
+sudo chsh -s /bin/zsh $SETUP_USER
 
 # Install Oh-my-zsh
 echo "[+} Install Oh my zsh "
